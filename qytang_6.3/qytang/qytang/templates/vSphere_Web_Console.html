@@ -17,6 +17,7 @@ var wmks = WMKS.createWMKS("wmksContainer",{})
  if(data.state == WMKS.CONST.ConnectionState.CONNECTED){
   console.log("connection state change : connected");}
  });
+//注意会有证书错误，需要把vc和esxi的证书加载到信任的根证书机构
 wmks.connect("{{text}}");
 </script>
 </body>
