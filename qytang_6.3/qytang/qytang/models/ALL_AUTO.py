@@ -1,19 +1,40 @@
-from vSphere_QYTVC import poweron_vm, get_token
-from vSphere_Core_Info import *
 from vSphere_Clone_VM import clone_vm_from_no
-from vSphere_Power_On import vSphere_power_on
 from vSphere_Create_PortGroup import create_pg
-from vSphere_GET_VMList import get_vm_id
-from vSphere_GET_PortGroupList import get_network_id
 from vSphere_EDIT_PortGroupLink import edit_nic
 from vSphere_Edit_PortGroupVlanID import edit_pg_vlan_id
-from ALL_AUTO_N9K import ALL_AUTO_N9K
 from ASA_Object import create_in_obj,create_out_obj
 from ASA_NAT import create_nat
 from ASA_ACL import create_acl
+
+from vSphere_Core_Info import *
+from vSphere_QYTVC import get_token, get_vms, poweron_vm
+
+def vSphere_power_on(VLANID):
+    token = get_token(vcip,username,password)
+
+    vm_list = get_vms(vcip,token)
+    print(vm_list)
+    for vm in vm_list:
+        if vm['name'] == 'CentOS_'+ str(VLANID):
+            vmid = vm['vm']
+
+    poweron_vm(vcip,token,vmid)
+
+import time
 from random import randint
 
-token = get_token(vcip,username,password)
+
+
+# def vSphere_power_on(VLANID):
+#     token = get_token(vcip,username,password)
+#
+#     vm_list = get_vms(vcip,token)
+#
+#     for vm in vm_list:
+#         if vm['name'] == 'CentOS_'+ str(VLANID):
+#             vmid = vm['vm']
+#
+#     poweron_vm(vcip,token,vmid)
 
 def vsphere_all_auto(temp_no,VLANID):
     # while True:
@@ -39,7 +60,7 @@ def vsphere_all_auto(temp_no,VLANID):
     edit_pg_vlan_id(VLANID)
 
     vSphere_power_on(VLANID)
-
+    #time.sleep(3)
     #print('=' * 100)
     #print('完成vSphere自动化任务！')
     return VLANID
@@ -61,7 +82,7 @@ if __name__ == "__main__":
     # VLANID = vsphere_all_auto(int(Choose_VM_No))
     # ALL_AUTO_N9K(VLANID)
     # config_asa(VLANID)
-    vsphere_all_auto(1,68)
+    vsphere_all_auto(1,79)
 
 
 
