@@ -1,4 +1,7 @@
+from vSphere_QYTVC import poweron_vm, get_token
+from vSphere_Core_Info import *
 from vSphere_Clone_VM import clone_vm_from_no
+from vSphere_Power_On import vSphere_power_on
 from vSphere_Create_PortGroup import create_pg
 from vSphere_GET_VMList import get_vm_id
 from vSphere_GET_PortGroupList import get_network_id
@@ -9,6 +12,8 @@ from ASA_Object import create_in_obj,create_out_obj
 from ASA_NAT import create_nat
 from ASA_ACL import create_acl
 from random import randint
+
+token = get_token(vcip,username,password)
 
 def vsphere_all_auto(temp_no,VLANID):
     # while True:
@@ -33,6 +38,8 @@ def vsphere_all_auto(temp_no,VLANID):
     #print('编辑端口组VLAN ID - '+str(VLANID)+'...')
     edit_pg_vlan_id(VLANID)
 
+    vSphere_power_on(VLANID)
+
     #print('=' * 100)
     #print('完成vSphere自动化任务！')
     return VLANID
@@ -50,10 +57,11 @@ Choose_VM_Banner = """ 1. OS: CentOS ; CPU: 1 ; RAM: 1
  Please select the Virtual Machine Template you want to create (1-4)"""
 
 if __name__ == "__main__":
-    Choose_VM_No = input(Choose_VM_Banner+":")
-    VLANID = vsphere_all_auto(int(Choose_VM_No))
-    ALL_AUTO_N9K(VLANID)
-    config_asa(VLANID)
+    # Choose_VM_No = input(Choose_VM_Banner+":")
+    # VLANID = vsphere_all_auto(int(Choose_VM_No))
+    # ALL_AUTO_N9K(VLANID)
+    # config_asa(VLANID)
+    vsphere_all_auto(1,68)
 
 
 

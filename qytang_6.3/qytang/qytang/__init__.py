@@ -76,7 +76,11 @@ def index():
 
 @application.route("/webconsole/<name>")
 def webconsole(name):
-    return render_template('vSphere_Web_Console.html',text = get_token_url(name))
+    try:
+        token_result = get_token_url(name)
+        return render_template('vSphere_Web_Console.html',text = token_result)
+    except:
+        return render_template('wait_1_min.html')
 
 @application.route('/socketio_simple')
 def socketio_simple():
@@ -134,6 +138,9 @@ def simple_cloud_client_msg(msg):
     pool.apply_async(vsphere_all_auto, args=(temp_no,VLANID))
     emit('server_response', {'data': 'vSphere虚拟机配置结束！'})
     emit('server_response', {'data': '全部配置配置完毕！可能需要再等待3-4分钟直到虚拟机配置结束'})
+    webconsoleurl = 'http://172.16.1.110:5000/webconsole/CentOS_' + str(VLANID)
+    a_url = '<a href="' + webconsoleurl + '" target="_blank">访问WEB Console</a>'
+    emit('server_response', {'data': a_url})
     #emit('server_response', {'data': msg['data'][0] + msg['data'][1]})
     # if msg['data'][1] == 'getconfig':
     #     for i in range(4):
