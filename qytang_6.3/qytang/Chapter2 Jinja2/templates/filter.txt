@@ -1,0 +1,10 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Jinja2过滤器</title>
+	</head>
+	<body>
+		<h1>Hello,{{name|capitalize}}</h1>
+		<h2>{{value|upper}}</h2>
+	</body>
+</html>

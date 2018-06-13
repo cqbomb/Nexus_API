@@ -1,0 +1,19 @@
+	{% import 'item.macro' as macros %}
+		<table border = '1'>
+			<tr>
+				<th>
+					id
+				</th>
+				<th>
+					name
+				</th>
+			</tr>
+			{% for item in items1 %}
+				{{ macros.render_item1(item) }}
+			{% endfor %}
+			{% for item in items2 %}
+				{{ macros.render_item1(item) }}
+			{% endfor %}	
+			{% for item in items3 %}
+				{{ macros.render_item1(item) }}
+			{% endfor %}		

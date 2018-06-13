@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% block head %}
+		<title>{% block title %}Parent{% endblock %}</title>
+	{% endblock %}
+</head>
+<link rel="shortcut icon" href="static/img/favicon.ico">
+<body>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+{% block img %}
+<img src="static/img/qyt_logo.jpg">
+{% endblock %}
+
+<h1>{% block bodytitle %}Parent{% endblock %}</h1>
+
+{% block body %}
+Parent
+{% endblock%}
+
+</body>
+</html>

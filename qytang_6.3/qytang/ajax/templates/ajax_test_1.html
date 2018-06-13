@@ -1,0 +1,35 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+<meta charset="utf-8">  
+
+<title>Flask JQuery</title>  
+<!-- 插入jquery -->  
+<script src="{{url_for('static', filename='jquery-3.2.1.js')}}"></script>  
+<script type=text/javascript>  
+var $SCRIPT_ROOT = {{request.script_root|tojson|safe}};  
+</script>  
+<script type=text/javascript>  
+$(function() {  
+    function submit_form(e) {  
+        $.getJSON($SCRIPT_ROOT + '/add', {cmd: $('input[name="cmd"]').val()},
+            function(data){$('#result').text(data.result);}
+                 );  
+                            };  
+    // 绑定click事件  
+    $('#calculate').bind('click', submit_form);  
+             }
+ );  
+</script> 
+
+
+</head>  
+<body>  
+<p> 
+    <p><b>请输入执行命令:</b></p>
+    <input type="text" size=10 name="cmd"> 
+</p>  
+<p><input type="button" id="calculate" value="提交命令"></p>  
+<p><span id=result></span></p>
+</body>  
+</html>   

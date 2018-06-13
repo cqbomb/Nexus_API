@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
+<html xmlns="http://www.w3.org/1999/xhtml">  
+<head>  
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />  
+    <title></title>  
+    <style type="text/css">  
+        *{  
+            float:left;  
+        }  
+    </style>  
+    <script type="text/javascript">  
+        //向iframe中写入内容  
+        function test(){  
+            var content=document.getElementById("content").value;  
+            var frame=window.frames["viewContent"]  
+            frame.document.open();  
+            frame.document.write(content);  
+            frame.document.close();  
+  
+        }  
+        //获取iframe中的内容  
+        function test1(){  
+               var win=document.getElementById("viewContent").contentWindow;  
+               var iframeContent=win.document.body.innerText;  
+               document.getElementById("viewFrame").innerText=iframeContent;  
+                console.log(iframeContent);  
+  
+        }  
+    </script>  
+</head>  
+<body>  
+<textarea style="width:500px;height:500px;border:1;" id="content">  
+  
+</textarea>  
+<button  onclick="test()">==></button>  
+<iframe id="viewContent">  
+</iframe>  
+<button  onclick="test1()">==></button>  
+    <div id="viewFrame" style="width:200px;height:200px;border:1px solid red">  
+  
+    </div>  
+</body>  
+</html>  

@@ -1,0 +1,18 @@
+{%  extends 'parent.html' %}
+
+{% block title %}
+	{{text}}
+{% endblock %}
+
+{% block content%}
+	<div class="container">
+		<div class="page-header">
+			<h1>{{text}}</h1>
+		</div>
+	</div>
+	<div class="container">
+		<h3>读取config.py {{template_name1}}</h3>
+		<h3>读取instance/config.py {{template_name2}}</h3>
+		<h3>读取导入参数{{template_name3}}</h3>
+	</div>
+{% endblock %}	

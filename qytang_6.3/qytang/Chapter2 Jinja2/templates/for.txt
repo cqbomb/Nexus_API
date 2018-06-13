@@ -1,0 +1,35 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>循环控制</title>
+	</head>
+	<body>
+		<ul>
+			{% for product in products %}
+			<li>{{product}}</li>
+			{% endfor %}
+		</ul>
+
+		<table border = '1'>
+			<tr>
+				<th>
+					id
+				</th>
+				<th>
+					name
+				</th>
+			</tr>
+
+			{% for item in items %}
+			<tr>
+				<td>
+					{{item.id}}
+				</td>
+				<td>
+					{{item.name}}
+				</td>
+			</tr>
+			{% endfor %}			
+
+	</body>
+</html>

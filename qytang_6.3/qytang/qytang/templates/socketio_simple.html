@@ -1,0 +1,107 @@
+{%  extends 'parent.html' %}
+
+{% block title %}
+  {{text}}
+{% endblock %}
+
+{%- block headjs %}
+    <script type="text/javascript" src="../static/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/socket.io.min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+    $(document).ready(function() {
+        var socket = io.connect("/socketio_simple/test1");
+
+        socket.on('connect', function() {
+            socket.emit('connect_event', {data: ['Script started!!!',0]});
+        })
+        var message_info = ""
+        socket.on('server_response', function(msg) {            
+            if (msg.data == 'Script started!!!')
+            {
+            var frame=window.frames["qytang"]
+            frame.document.open();  
+            frame.document.write(msg.data);  
+            frame.document.close();
+            message_info = msg.data                
+            }
+            else
+            {
+            //$("#btn").attr("disabled", true);        
+            var frame=window.frames["qytang"]
+            message_info = message_info + '<br>' + msg.data 
+            frame.document.open();  
+            frame.document.write(message_info);  
+            frame.document.close();            
+            }
+        });
+
+        $('form#emit').submit(function(event) {
+                socket.emit('client_event', {data: [$('input[name$="rack"]:checked').val(),$('input[name$="opt"]:checked').val()]});
+                return false;
+            });
+    });
+    
+    </script>  
+{%- endblock headjs %} 
+{% block ico %}
+  <link rel="shortcut icon" href="../static/img/favicon.ico">
+{% endblock %}
+
+{% block content%}
+  <div class="container">
+    <div class="page-header">
+      <h1>{{text}}</h1>
+    </div>
+  </div>
+  <div class="container">
+<form id="emit" method="POST" action='#'>
+                {{form.rack.label}}<br>
+                {{form.rack}}<br>
+                {{form.opt.label}}<br>
+                {{form.opt}}<br>  
+                {{form.submit}}             
+    <!--<input type="text" name="emit_data" id="emit_data" placeholder="Message">
+    <br>
+    <input type="submit" value="提交" id = 'btn'>-->
+</form>
+<br>
+<iframe name = qytang width="800" height="200">
+</iframe>
+{% endblock %}
+<!--
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Flask-SocketIO Test</title>
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdn.bootcss.com/socket.io/1.5.1/socket.io.min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+    $(document).ready(function() {
+        var socket = io.connect("http://nginx.qytang.com:5000/socketio_simple/test1");
+
+        socket.on('connect', function() {
+            socket.emit('connect_event', {data: 'connected!'});
+        })
+
+        socket.on('server_response', function(msg) {
+            $('#log').append('<br>' + $('<div/>').text('Received #' + ': ' + msg.data).html());
+        });
+
+        $('form#emit').submit(function(event) {
+                socket.emit('client_event', {data: $('#emit_data').val()});
+                return false;
+            });
+    });
+    
+    </script>   
+</head>
+<body>
+    <h2>WebSokect</h2>
+    <form id="emit" method="POST" action='#'>
+        <input type="text" name="emit_data" id="emit_data" placeholder="Message">
+        <input type="submit" value="Echo">
+    </form>
+    <div id='log'></div>
+</body>
+</html>
+-->

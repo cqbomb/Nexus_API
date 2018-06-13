@@ -1,0 +1,19 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Flask-WTF模板</title>
+	</head>
+	<body>
+		{% for message in form.firstname.errors %}
+			<div>{{message}}
+		{% endfor %}
+		<form action = 'http://nginx.qytang.com:8888' method=post>
+			<fieldset>
+				{{form.hidden_tag()}}<!--防止跨域访问-->
+				{{form.firstname.label}}<br>
+				{{form.firstname}}<br>
+				{{form.submit}}
+			</fieldset>
+		</form>
+	</body>
+</html>

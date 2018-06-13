@@ -1,0 +1,12 @@
+<html>
+	<head>
+		{% block head %}
+		<title>{% block title %}Parent{% endblock %}</title>
+		{% endblock %}
+	</head>
+	<body>
+		{% block body %}
+		Hello
+		{% endblock%}
+	</body>
+</html>

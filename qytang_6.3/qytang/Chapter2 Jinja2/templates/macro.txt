@@ -1,0 +1,43 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>宏操作</title>
+	</head>
+	<body>
+	{% macro render_item(item) %}
+		<tr>
+			<td>
+				{{item.id}}
+			</td>
+			<td>
+				{{item.name}}
+			</td>
+		</tr>
+	{% endmacro %}
+
+		<table border = '1'>
+			<tr>
+				<th>
+					id
+				</th>
+				<th>
+					name
+				</th>
+			</tr>
+			{% for item in items1 %}
+				{{ render_item(item) }}
+			{% endfor %}	
+
+			{% for item in items2 %}
+				{{ render_item(item) }}
+			{% endfor %}	
+
+			{% for item in items3 %}
+				{{ render_item(item) }}
+			{% endfor %}	
+
+			{% for item in items1 %}
+				{{ render_item(item) }}
+			{% endfor %}
+	</body>
+</html>

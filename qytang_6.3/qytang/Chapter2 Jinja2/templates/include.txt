@@ -1,0 +1,11 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>include指令</title>
+	</head>
+	<body>
+		{% include 'items.txt'%}
+		{% include 'items.txt'%}
+		{% include 'items.txt'%}
+	</body>
+</html>

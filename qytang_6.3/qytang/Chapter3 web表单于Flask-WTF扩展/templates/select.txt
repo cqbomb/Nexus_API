@@ -1,0 +1,37 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Flask-WTF支持的选择表单组件</title>
+	</head>
+	<body>
+		{% if ok %}
+		<script>
+			alert('数据录入成功')
+		</script>
+		{% endif %}
+		{% for message in form.radio.errors %}
+			<div>{{message}}
+		{% endfor %}
+		{% for message in form.select.errors %}
+			<div>{{message}}
+		{% endfor %}
+		{% for message in form.selectmultiple.errors %}
+			<div>{{message}}
+		{% endfor %}
+		<form action = 'http://nginx.qytang.com:8888' method=post>
+			<fieldset>
+				{{form.hidden_tag()}}<!--防止跨域访问-->
+				{{form.radio.label}}<br>
+				{{form.radio}}
+				<br><br>
+				{{form.select.label}}<br>
+				{{form.select}}
+				<br><br>
+				{{form.selectmultiple.label}}<br>
+				{{form.selectmultiple}}
+				<br><br>
+				{{form.submit}}
+			</fieldset>
+		</form>
+	</body>
+</html>

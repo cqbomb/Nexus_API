@@ -1,0 +1,8 @@
+{%  extends 'parent.txt' %}
+{% block title %}
+	{{super()}}-{{text}}
+{% endblock %}
+
+{% block body %}
+	<h1>{{super()}}, Word!</h1>
+{% endblock %}

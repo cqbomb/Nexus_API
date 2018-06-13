@@ -1,0 +1,47 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>条件控制</title>
+	</head>
+	<body>
+		{% if user %}
+			Hello, {{user}}!
+		{% else %}
+			Hello, Stranger!
+		{% endif %}
+		<p>
+		<!--intValue是数值类型 -->
+		{% if not intValue %}
+			intValue的值为0
+		{% elif (intValue > 10) and (intValue < 20)%}
+			intValue的值在10和20之间
+		{% elif intValue > 100 %}	
+			intValue的值大于100	
+		{% else %}
+			intValue的值在其他的范围
+		{% endif %}
+		</p>
+		<p>
+		<!--列表 -->
+		{% if list %}
+			列表中有值
+		{% else %}
+			列表不存在或者没有值
+		{% endif %}
+		</p>
+		<p>
+		<!--字典 -->
+		{% if dict %}
+			字典中有值
+		{% else %}
+			字典不存在或者没有值
+		{% endif %}
+		</p>
+
+		<!--None -->
+		{% if not value %}
+			value为None
+		{% endif %}
+		</p>
+	</body>
+</html>

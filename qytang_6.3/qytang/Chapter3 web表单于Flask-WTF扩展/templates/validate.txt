@@ -1,0 +1,60 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Flask-WTF验证函数</title>
+	</head>
+	<body>
+		{% if ok %}
+		<script>
+			alert('数据录入成功')
+		</script>
+		{% endif %}
+		{% for message in form.name.errors %}
+			<div>{{message}}
+		{% endfor %}
+		{% for message in form.email.errors %}
+			<div>{{message}}
+		{% endfor %}
+		{% for message in form.ip.errors %}
+			<div>{{message}}
+		{% endfor %}
+		{% for message in form.password1.errors %}
+			<div>{{message}}
+		{% endfor %}
+		{% for message in form.password2.errors %}
+			<div>{{message}}
+		{% endfor %}
+		{% for message in form.value.errors %}
+			<div>{{message}}
+		{% endfor %}
+		{% for message in form.regexpValue.errors %}
+			<div>{{message}}
+		{% endfor %}
+		{% for message in form.url.errors %}
+			<div>{{message}}
+		{% endfor %}
+		<form action = 'http://nginx.qytang.com:8888' method=post>
+			<fieldset>
+				{{form.hidden_tag()}}<!--防止跨域访问-->
+				{{form.name.label}}<br>
+				{{form.name}}<br>
+				{{form.email.label}}<br>
+				{{form.email}}<br>
+				{{form.ip.label}}<br>
+				{{form.ip}}<br>
+				{{form.password1.label}}
+				{{form.password1}}<br>
+				{{form.password2.label}}
+				{{form.password2}}<br>
+				{{form.value.label}}<br>
+				{{form.value}}<br>
+				{{form.regexpValue.label}}<br>
+				{{form.regexpValue}}<br>
+				{{form.url.label}}<br>
+				{{form.url}}<br>
+				<br>
+				{{form.submit}}
+			</fieldset>
+		</form>
+	</body>
+</html>

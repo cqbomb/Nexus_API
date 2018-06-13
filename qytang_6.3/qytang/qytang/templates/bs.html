@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}集成bootstrap{% endblock %}
+
+{% block navbar %}
+<div class = 'navbar navbar-inverse' role="naviagtion">
+	<a href="#" class="pull-left"><img src="../static/img/logo_long_new.png" height="50" width=auto></a>
+	<div class = "container">
+		<div class = "navbar-header">
+			<a class="navbar-brand" href="/import_and_value_test">参数测试</a>
+		</div>
+
+    	<div>
+        	<div class="navbar-brand">
+            	<div class="dropdown">
+                	<div class="dropdown-toggle" data-toggle="dropdown">
+                    	图表
+                    	<b class="caret"></b>
+                	</div>
+                	<ul class="dropdown-menu">
+                    	<li><a href="/chart/line">线性</a></li>
+                    	<li><a href="/chart/linecpu">线性CPU</a></li>
+                    	<li class="divider"></li>
+                    	<li><a href="/chart/pie">饼状</a></li>
+                    	<li class="divider"></li>
+                    	<li><a href="/chart/column">柱状</a></li>
+                	</ul>
+            	</div>
+        	</div>
+    	</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block content%}
+	<div class="container">
+		<div class="page-header">
+			<h1>Hello,{{name}}</h1>
+		</div>
+	</div>
+{% endblock %}	

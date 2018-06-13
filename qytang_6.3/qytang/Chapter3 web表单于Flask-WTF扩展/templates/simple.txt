@@ -1,0 +1,44 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Flask-WTF支持的简单表单组件</title>
+	</head>
+	<body>
+		{% if ok %}
+		<script>
+			alert('数据录入成功')
+		</script>
+		{% endif %}
+		{% for message in form.name.errors %}
+			<div>{{message}}
+		{% endfor %}
+		{% for message in form.age.errors %}
+			<div>{{message}}
+		{% endfor %}
+		{% for message in form.birth.errors %}
+			<div>{{message}}
+		{% endfor %}
+		{% for message in form.isStudent.errors %}
+			<div>{{message}}
+		{% endfor %}
+		{% for message in form.resume.errors %}
+			<div>{{message}}
+		{% endfor %}
+		<form action = 'http://nginx.qytang.com:8888' method=post>
+			<fieldset>
+				{{form.hidden_tag()}}<!--防止跨域访问-->
+				{{form.name.label}}<br>
+				{{form.name}}<br>
+				{{form.age.label}}<br>
+				{{form.age}}<br>
+				{{form.birth.label}}<br>
+				{{form.birth}}<br>
+				{{form.isStudent.label}}
+				{{form.isStudent}}<br>
+				{{form.resume.label}}<br>
+				{{form.resume}}<br>
+				{{form.submit}}
+			</fieldset>
+		</form>
+	</body>
+</html>
