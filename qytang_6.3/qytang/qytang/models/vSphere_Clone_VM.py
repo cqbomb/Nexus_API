@@ -136,4 +136,4 @@ def clone_vm_from_no(vm_no,temp_no):
     return None
 
 if __name__ == "__main__":
-    clone_vm_from_no(71,1)
+    clone_vm_from_no(98,1)
