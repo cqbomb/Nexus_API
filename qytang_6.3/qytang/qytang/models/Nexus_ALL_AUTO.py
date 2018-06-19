@@ -8,8 +8,8 @@ from random import randint
 # Vlan_ID = randint(1, 100)
 def Nexus_ALL_AUTO(inputi):
     Vlan_ID = str(inputi)
-    # print('='*100)
-    # print('开始配置N9K网络:')
+    print('='*100)
+    print('开始配置N9K网络:')
     VXLANid = '100' + Vlan_ID
     SVIipadd = '172.16.' + Vlan_ID + '.1'
 
@@ -22,25 +22,25 @@ def Nexus_ALL_AUTO(inputi):
             continue
         break
 
-    # print('NXOS-1 vlan lists Befor: ' + str(NXOS1_VLAN_LISTS))
-    # print('NXOS-3 vlan lists Befor: ' + str(NXOS3_VLAN_LISTS))
+    print('NXOS-1 vlan lists Befor: ' + str(NXOS1_VLAN_LISTS))
+    print('NXOS-3 vlan lists Befor: ' + str(NXOS3_VLAN_LISTS))
 
-    # print('create vlan \'' + Vlan_ID + '\' on NXOS-1 adn NXOS-3')
+    print('create vlan \'' + Vlan_ID + '\' on NXOS-1 adn NXOS-3')
     Edit_VLAN(Vlan_ID)
 
-    # print('NXOS-1 vlan lists Now: ' + str(nxos1_vlan_lists()))
-    # print('NXOS-3 vlan lists Now: ' + str(nxos3_vlan_lists()))
+    print('NXOS-1 vlan lists Now: ' + str(nxos1_vlan_lists()))
+    print('NXOS-3 vlan lists Now: ' + str(nxos3_vlan_lists()))
 
-    # print('Create vxlan on NXOS-1 adn NXOS-3: ' + VXLANid)
+    print('Create vxlan on NXOS-1 adn NXOS-3: ' + VXLANid)
     Edit_VXLAN(Vlan_ID)
 
-    # print('Edit DHCP Realy for Vlan' + Vlan_ID)
+    print('Edit DHCP Realy for Vlan' + Vlan_ID)
     Edit_DHCP_Relay_Server(Vlan_ID)
 
-    # print('Create vlan ' + Vlan_ID + ' SVI address'+ ' on NXOS-3: ' + SVIipadd)
+    print('Create vlan ' + Vlan_ID + ' SVI address'+ ' on NXOS-3: ' + SVIipadd)
     Edit_SVI(Vlan_ID)
     Edit_SVI_IPAdd(Vlan_ID)
 
 if __name__ == "__main__":
-    Nexus_ALL_AUTO(67)
-    # print('='*100)
+    Nexus_ALL_AUTO(69)
+    print('='*100)

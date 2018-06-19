@@ -130,10 +130,10 @@ def clone_vm_from_no(vm_no,temp_no):
     clone_vm(
         content, template, vm_name, si,
         None, 'vm_cloned_from_template',
-        None, None,
-        'QYT_Cloud', False, None)
+        None, None, 'QYT_Cloud',
+        False, None)
 
     return None
 
 if __name__ == "__main__":
-    clone_vm_from_no(98,1)
+    clone_vm_from_no(71,1)
