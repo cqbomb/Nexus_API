@@ -131,7 +131,7 @@ def clone_vm_from_no(vm_no,temp_no):
         content, template, vm_name, si,
         None, 'vm_cloned_from_template',
         None, None,
-        None, False, None)
+        'QYT_Cloud', False, None)
 
     return None
 
