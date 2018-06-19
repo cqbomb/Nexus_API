@@ -56,7 +56,7 @@ if __name__ == "__main__":
     # VLANID = vsphere_all_auto(int(Choose_VM_No))
     # ALL_AUTO_N9K(VLANID)
     # config_asa(VLANID)
-    vsphere_all_auto(1,100)
+    vsphere_all_auto(2,66)
 
 
 

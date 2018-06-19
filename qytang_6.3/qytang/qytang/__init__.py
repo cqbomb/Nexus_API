@@ -129,7 +129,7 @@ def simple_cloud_client_msg(msg):
             continue
         break
     emit('server_response', {'data': '开始配置N9K网络！'})
-    # ALL_AUTO_N9K(VLANID)
+    ALL_AUTO_N9K(VLANID)
     emit('server_response', {'data': 'N9K网络配置完毕！'})
     emit('server_response', {'data': '开始配置ASA！'})
     # config_asa(VLANID)
