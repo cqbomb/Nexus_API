@@ -5,7 +5,6 @@ from flask import Flask, render_template, session, request, make_response
 from flask_debugtoolbar import DebugToolbarExtension
 from .models.module1 import Value1#相对导入绝对路径为qytang/module1
 from .models.ALL_AUTO import vsphere_all_auto,config_asa
-# from .models.ALL_AUTO_N9K import ALL_AUTO_N9K
 from .models.Nexus_ALL_AUTO import Nexus_ALL_AUTO
 from .models.DHCP_Server_Edit import dhcp_server_edit
 from .models.vSphere_GET_VMList import get_vm_id
@@ -131,7 +130,6 @@ def simple_cloud_client_msg(msg):
             continue
         break
     emit('server_response', {'data': '开始配置N9K网络！'})
-    # ALL_AUTO_N9K(VLANID)
     Nexus_ALL_AUTO(VLANID)
     emit('server_response', {'data': 'N9K网络配置完毕！'})
     emit('server_response', {'data': '开始配置DHCP服务器！'})
@@ -142,9 +140,9 @@ def simple_cloud_client_msg(msg):
     emit('server_response', {'data': 'ASA配置完毕！'})
     emit('server_response', {'data': '开始配置vSphere虚拟机'})
     pool.apply_async(vsphere_all_auto, args=(temp_no,VLANID))
-    time.sleep(.5)
+    time.sleep(1)
     emit('server_response', {'data': 'vSphere虚拟机配置结束！'})
-    time.sleep(.5)
+    time.sleep(1)
     emit('server_response', {'data': '虚拟机账号：root/Cisc0123'})
     emit('server_response', {'data': '全部配置配置完毕！可能需要再等待3-4分钟直到虚拟机配置结束'})
     webconsoleurl = 'http://172.16.1.110:5000/webconsole/CentOS_' + str(VLANID)
