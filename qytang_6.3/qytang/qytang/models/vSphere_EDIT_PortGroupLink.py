@@ -21,11 +21,11 @@ def get_vmhost_id(no):
 
 def edit_nic(no):
     net_id = get_net_id(no)
-    print('网络唯一ID:' + str(net_id))
+    # print('网络唯一ID:' + str(net_id))
     vm_id = get_vmhost_id(no)
-    print('虚拟机唯一ID:' + str(vm_id))
+    # print('虚拟机唯一ID:' + str(vm_id))
     token = get_token(vcip,username,password)
-    print('为虚拟机'+str(vm_id)+'关联端口组'+str(net_id))
+    # print('为虚拟机'+str(vm_id)+'关联端口组'+str(net_id))
     add_vm_nic(vcip, token, vm_id, net_id)
 
 if __name__ == "__main__":

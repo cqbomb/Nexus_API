@@ -5,7 +5,7 @@ def vSphere_power_on(VLANID):
     token = get_token(vcip,username,password)
 
     vm_list = get_vms(vcip,token)
-    print(vm_list)
+    # print(vm_list)
     for vm in vm_list:
         if vm['name'] == 'CentOS_'+ str(VLANID):
             vmid = vm['vm']

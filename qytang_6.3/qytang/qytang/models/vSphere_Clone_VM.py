@@ -35,7 +35,8 @@ def get_obj(content, vimtype, name):
 def clone_vm(
         content, template, vm_name, si,
         datacenter_name, vm_folder, datastore_name,
-        cluster_name, resource_pool, power_on, datastorecluster_name):
+        # cluster_name, resource_pool, power_on, datastorecluster_name):
+        cluster_name, power_on, datastorecluster_name):
     """
     Clone a VM from a template/VM, datacenter_name, vm_folder, datastore_name
     cluster_name, resource_pool, and power_on are all optional.
@@ -58,10 +59,11 @@ def clone_vm(
     # if None, get the first one
     cluster = get_obj(content, [vim.ClusterComputeResource], cluster_name)
 
-    if resource_pool:
-        resource_pool = get_obj(content, [vim.ResourcePool], resource_pool)
-    else:
-        resource_pool = cluster.resourcePool
+    # if resource_pool:
+    #     resource_pool = get_obj(content, [vim.ResourcePool], resource_pool)
+    # else:
+    #     resource_pool = cluster.resourcePool
+    resource_pool = vim.ResourcePool("resgroup-342")
 
     vmconf = vim.vm.ConfigSpec()
 
@@ -96,9 +98,11 @@ def clone_vm(
     clonespec.location = relospec
     clonespec.powerOn = power_on
 
-    print("cloning VM...")
+    # print('=' * 100)
+    print("-- Starting to Clone VM --")
     task = template.Clone(folder=destfolder, name=vm_name, spec=clonespec)
     wait_for_task(task)
+    print("-- The VM has been Cloned --")
 
 
 def clone_vm_from_no(vm_no,temp_no):
@@ -127,10 +131,15 @@ def clone_vm_from_no(vm_no,temp_no):
 
     vm_name = 'CentOS_'+str(vm_no)
 
+    # clone_vm(
+    #     content, template, vm_name, si,
+    #     None, 'vm_cloned_from_template',
+    #     None, None, 'QYT_Cloud',
+    #     False, None)
     clone_vm(
         content, template, vm_name, si,
         None, 'vm_cloned_from_template',
-        None, None, 'QYT_Cloud',
+        None, None,
         False, None)
 
     return None

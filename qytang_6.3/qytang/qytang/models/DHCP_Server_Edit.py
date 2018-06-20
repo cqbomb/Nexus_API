@@ -24,7 +24,7 @@ def dhcp_server_edit(inputx):
     ssh.connect(dhcp_server_ip, port=22, username=username, password=password,
                 look_for_keys=False, allow_agent=False)
     ssh_conn = ssh.invoke_shell()
-    output = ssh_conn.recv(65535)
+    # output = ssh_conn.recv(65535)
     # print(output)
 
     for x in dhcp_edit_command:
@@ -32,11 +32,12 @@ def dhcp_server_edit(inputx):
         # print(ssh_command)
         ssh_conn.send(ssh_command)
         time.sleep(.5)
-        output = ssh_conn.recv(65535)
+        # output = ssh_conn.recv(65535)
         # print(output)
 
+    print('=' * 100)
+    print("DHCP Service for CentOS_" + VlanID + " is all ready")
     ssh.close()
-    print("DHCP Pool for CentOS_" + VlanID + " is all ready")
 
 if __name__ == "__main__":
     dhcp_server_edit(66)
