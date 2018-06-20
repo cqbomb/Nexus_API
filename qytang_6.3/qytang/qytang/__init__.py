@@ -121,7 +121,7 @@ def simple_cloud_client_msg(msg):
         temp_no = 4
 
     while True:
-        VLANID = randint(1,100)
+        VLANID = randint(10,100)
         VMID = get_vm_id()
         NETID = get_network_id()
         if VLANID in VMID:
@@ -129,6 +129,7 @@ def simple_cloud_client_msg(msg):
         if VLANID in NETID:
             continue
         break
+    print(VLANID)
     emit('server_response', {'data': '开始配置N9K网络！'})
     Nexus_ALL_AUTO(VLANID)
     emit('server_response', {'data': 'N9K网络配置完毕！'})
