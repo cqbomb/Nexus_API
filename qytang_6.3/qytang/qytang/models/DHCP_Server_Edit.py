@@ -1,4 +1,4 @@
-from N9K_Core_Info import username, password
+from Nexus_Core_Info import username, password
 import paramiko
 import time
 

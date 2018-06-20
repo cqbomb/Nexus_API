@@ -6,7 +6,6 @@ from vSphere_Power_On import vSphere_power_on
 from ASA_Object import create_in_obj,create_out_obj
 from ASA_NAT import create_nat
 from ASA_ACL import create_acl
-from
 
 import time
 from random import randint
@@ -38,7 +37,7 @@ def vsphere_all_auto(temp_no,VLANID):
     vSphere_power_on(VLANID)
     #time.sleep(3)
     # print('=' * 100)
-    print('vSphere Auto is Fineshed')
+    print('-- vSphere Auto is Fineshed --')
     return VLANID
 
 def config_asa(VLANID):
