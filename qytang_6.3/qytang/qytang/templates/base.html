@@ -21,7 +21,7 @@
   
     {%- block styles %}
     <!-- Bootstrap -->
-    <link href="{{bootstrap_find_resource('css/bootstrap.css', cdn='bootstrap')}}" rel="stylesheet">
+    <link href="http://172.16.1.110:5000/static/bootstrap.min.css" rel="stylesheet">
     {%- endblock styles %}
     {%- endblock head %}
   </head>
@@ -33,8 +33,8 @@
     {%- endblock content %}
 
     {% block scripts %}
-    <script src="{{bootstrap_find_resource('jquery.js', cdn='jquery')}}"></script>
-    <script src="{{bootstrap_find_resource('js/bootstrap.js', cdn='bootstrap')}}"></script>
+    <script src="http://172.16.1.110:5000/static/jquery.min.js"></script>
+    <script src="http://172.16.1.110:5000/static/bootstrap.min.js"></script>
     {%- endblock scripts %}
     {%- endblock body %}
   </body>

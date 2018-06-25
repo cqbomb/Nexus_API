@@ -137,7 +137,7 @@ def simple_cloud_client_msg(msg):
     dhcp_server_edit(VLANID)
     emit('server_response', {'data': 'DHCP服务器配置完毕！'})
     emit('server_response', {'data': '开始配置ASA！'})
-    # config_asa(VLANID)
+    config_asa(VLANID)
     emit('server_response', {'data': 'ASA配置完毕！'})
     emit('server_response', {'data': '开始配置vSphere虚拟机'})
     pool.apply_async(vsphere_all_auto, args=(temp_no,VLANID))
