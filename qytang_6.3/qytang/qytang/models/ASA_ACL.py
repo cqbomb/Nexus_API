@@ -42,6 +42,26 @@ def create_acl(VLANID):
     r = http.request('POST', url, headers=headers, body=json.dumps(json_data))  # 使用POST发起请求,并且使用认证头部
     #print(r.data.decode())
 
+    json_data_01 = {
+                "sourceAddress": {
+                "kind": "AnyIPAddress",
+                "value": "any"
+                },
+                "destinationAddress": {
+                "kind": "objectRef#NetworkObj",
+                "objectId":object_name
+                },
+                "destinationService": {
+                "kind": "NetworkProtocol",
+                "value": "tcp"
+                },
+                "permit": True,
+                "active": True
+                }
+    url_01 = 'https://' + ip + '/api/access/in/Outside/rules'  # 请求的URL
+    r_01 = http.request('POST', url_01, headers=headers, body=json.dumps(json_data_01))  # 使用POST发起请求,并且使用认证头部
+    #print(r_01.data.decode())
+
 
 if __name__ == "__main__":
-    create_acl(46)
+    create_acl(31)
