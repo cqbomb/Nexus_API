@@ -43,8 +43,11 @@ def vsphere_all_auto(temp_no,VLANID):
 def config_asa(VLANID):
     create_in_obj(VLANID)
     create_out_obj(VLANID)
+    print('Edit ASA Object: Done')
     create_nat(VLANID)
+    print('Edit ASA Nat: Done')
     create_acl(VLANID)
+    print('Edit ASA ACL: Done')
 
 Choose_VM_Banner = """ 1. OS: CentOS ; CPU: 1 ; RAM: 1
  2. OS: CentOS ; CPU: 1 ; RAM: 2
