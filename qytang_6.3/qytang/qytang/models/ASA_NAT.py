@@ -59,4 +59,4 @@ def create_nat(VLANID):
 
 if __name__ == "__main__":
 
-    create_nat(46)
+    create_nat(6)

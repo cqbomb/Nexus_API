@@ -58,9 +58,9 @@ Choose_VM_Banner = """ 1. OS: CentOS ; CPU: 1 ; RAM: 1
 if __name__ == "__main__":
     # Choose_VM_No = input(Choose_VM_Banner+":")
     # VLANID = vsphere_all_auto(int(Choose_VM_No))
-    # ALL_AUTO_N9K(VLANID)
-    # config_asa(VLANID)
-    vsphere_all_auto(2,67)
+    # ALL_AUTO_N9K(29)
+    config_asa(29)
+    # vsphere_all_auto(2,67)
 
 
 

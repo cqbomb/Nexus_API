@@ -1,7 +1,7 @@
 import json
 from urllib3 import *
 from base64 import b64encode
-
+import time
 
 def create_acl(VLANID):
     username = "admin"
@@ -38,10 +38,12 @@ def create_acl(VLANID):
                 "permit": True,
                 "active": True
                 }
+    print('test')
     url = 'https://' + ip + '/api/access/in/Outside/rules'  # 请求的URL
     r = http.request('POST', url, headers=headers, body=json.dumps(json_data))  # 使用POST发起请求,并且使用认证头部
-    #print(r.data.decode())
-
+    print(r.data.decode())
+    print('test')
+    time.sleep(2)
     json_data_01 = {
                 "sourceAddress": {
                 "kind": "AnyIPAddress",
@@ -58,10 +60,11 @@ def create_acl(VLANID):
                 "permit": True,
                 "active": True
                 }
-    url_01 = 'https://' + ip + '/api/access/in/Outside/rules'  # 请求的URL
-    r_01 = http.request('POST', url_01, headers=headers, body=json.dumps(json_data_01))  # 使用POST发起请求,并且使用认证头部
-    #print(r_01.data.decode())
+    print(json_data_01)
+    # url_01 = 'https://' + ip + '/api/access/in/Outside/rules'  # 请求的URL
+    r_01 = http.request('POST', url, headers=headers, body=json.dumps(json_data_01))  # 使用POST发起请求,并且使用认证头部
+    print(r_01.data.decode())
 
 
 if __name__ == "__main__":
-    create_acl(31)
+    create_acl(6)

@@ -42,5 +42,5 @@ def Nexus_ALL_AUTO(inputi):
     Edit_SVI_IPAdd(Vlan_ID)
 
 if __name__ == "__main__":
-    Nexus_ALL_AUTO(96)
+    Nexus_ALL_AUTO(27)
     # print('='*100)

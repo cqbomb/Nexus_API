@@ -69,5 +69,5 @@ def create_out_obj(VLANID):
     #print(r.data.decode())
 
 if __name__ == "__main__":
-    create_in_obj(46)
-    create_out_obj(46)
+    create_in_obj(6)
+    create_out_obj(6)
